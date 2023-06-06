@@ -1,6 +1,10 @@
+import { ContentLayout, PageTitle } from "@/components";
 
 export default function PisCofins() {
   return (
-    <div>Pis/Cofins</div>
+    <>
+      <PageTitle>Cálculo PIS/COFINS</PageTitle>
+      <ContentLayout>Content</ContentLayout>
+    </>
   )
 }

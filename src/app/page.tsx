@@ -1,5 +1,10 @@
+import { ContentLayout, PageTitle } from "@/components";
+
 export default function Home() {
   return (
-    <div>Home</div>
+    <>
+    <PageTitle>Home</PageTitle>
+    <ContentLayout>Content</ContentLayout>
+  </>
   )
 }

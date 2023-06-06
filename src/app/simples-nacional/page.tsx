@@ -1,6 +1,10 @@
+import { ContentLayout, PageTitle } from "@/components";
 
 export default function Simples() {
   return (
-    <div>Simples</div>
+    <>
+    <PageTitle>Cálculo Simples Nacional</PageTitle>
+    <ContentLayout>Content</ContentLayout>
+  </>
   )
 }
