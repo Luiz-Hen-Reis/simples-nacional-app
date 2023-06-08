@@ -1,3 +1,5 @@
+
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Aside, Header } from "@/components";
@@ -15,15 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
-        className={`${inter.className} flex flex-col lg:flex-row bg-gray-200 lg:w-screen lg:h-screen`}
+        className={`${inter.className} flex flex-col bg-gray-200`}
       >
+      <Header />
+      <main className="flex flex-col lg:flex-row">
         <Aside />
-        <div className="flex-1 flex flex-col">
-          <Header />
-          <main className="flex-1 p-4 lg:p-6">{children}</main>
+        <div className="flex-1 p-4 lg:p-6">
+          {children}
         </div>
+      </main>
       </body>
     </html>
   );
