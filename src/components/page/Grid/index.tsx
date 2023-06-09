@@ -1,7 +1,7 @@
 "use client";
 
 import { CnaeData } from "@/types/cnaeList";
-import GridItem from "../GridItem";
+import GridItem from "./GridItem";
 
 type Props = {
   cnaeList: CnaeData[];

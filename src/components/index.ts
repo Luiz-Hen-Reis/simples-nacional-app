@@ -1,9 +1,9 @@
-import Aside from "./Aside";
-import Header from "./Header";
-import PageTitle from "./PageTitle";
-import ContentLayout from "./ContentLayout";
-import Grid from "./Grid";
-import Loading from "./Loading";
-import CustomInput from "./CustomInput";
+import Aside from "./page/Aside";
+import Header from "./page/Header";
+import PageTitle from "./page/PageTitle";
+import ContentLayout from "./page/ContentLayout";
+import Grid from "./page/Grid";
+import Loading from "./ui/Loading";
+import CustomInput from "./ui/CustomInput";
 
 export { Aside, Header, PageTitle, ContentLayout, Grid, Loading, CustomInput };
