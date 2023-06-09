@@ -1,3 +1,5 @@
+"use client";
+
 import { ContentLayout, PageTitle } from "@/components";
 
 export default function Simples() {

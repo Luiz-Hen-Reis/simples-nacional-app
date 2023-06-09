@@ -18,7 +18,7 @@ export default function GridItem({ cnae }: Props) {
         title="Mais informações"
         className="text-xl text-blue-700 font-bold mb-4"
       >
-        &#187; {cnae.id}
+        &#187; Classe - {cnae.id}
       </Link>
       <strong>{cnae.descricao}</strong>
       <p className="text-slate-400 text-sm">

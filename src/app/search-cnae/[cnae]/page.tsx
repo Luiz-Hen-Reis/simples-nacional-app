@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentLayout, Loading, PageTitle } from "@/components";
+import { ContentLayout, CustomInput, Loading, PageTitle } from "@/components";
 import { getCnaeInfo } from "@/server-actions";
 import { CnaeData } from "@/types/cnaeList";
 import { useParams, useRouter } from "next/navigation";
@@ -28,27 +28,32 @@ export default function Cnae() {
     <>
       <div className="flex items-center justify-between">
         <PageTitle>
-          {cnae} - {loading && "CARREGANDO..."}{" "}
-          {!loading && cnaeInfo?.descricao}
+          {`CLASSE - ${cnae}`} - {loading && "CARREGANDO..."}{" "}
+          {!loading &&  cnaeInfo?.descricao}
         </PageTitle>
-        <button
-          onClick={() => router.back()}
-          className="text-xl bg-blue-700 py-2 px-4 text-white rounded-lg shadow-lg hover:bg-blue-700/75 transition-colors"
-        >
-          Voltar
-        </button>
+        <CustomInput
+          inputType="button"
+          inputValue="Voltar"
+          handleClick={() => router.back()}
+        />
       </div>
       <ContentLayout>
         {loading && <Loading />}
         {!loading && (
           <div className="flex flex-col">
-            <strong className="mb-4">DIVISÃO: {cnaeInfo?.grupo.divisao.descricao}</strong>
-            <strong className="mb-4">SEÇÃO: {cnaeInfo?.grupo.divisao.secao.descricao}</strong>
+            <strong className="mb-4">
+              SEÇÃO: {cnaeInfo?.grupo.divisao.secao.id} - <span>{cnaeInfo?.grupo.divisao.secao.descricao}</span>
+            </strong>
+            <strong className="mb-4">
+              DIVISÃO: {cnaeInfo?.grupo.divisao.id} - <span>{cnaeInfo?.grupo.divisao.descricao}</span>
+            </strong>
             <div>
               <strong>OBSERVAÇÕES:</strong>
-            {cnaeInfo?.observacoes.map((obs) => (
-              <p key={obs} className="text-slate-400 mb-4">&#187; {obs}</p>
-            ))}
+              {cnaeInfo?.observacoes.map((obs) => (
+                <p key={obs} className="text-slate-400 mb-4">
+                  &#187; {obs}
+                </p>
+              ))}
             </div>
           </div>
         )}

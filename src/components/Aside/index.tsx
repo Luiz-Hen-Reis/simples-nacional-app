@@ -1,3 +1,5 @@
+'use client';
+
 import AsideListItem from '../AsideListItem';
 
 export default function Aside() {

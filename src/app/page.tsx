@@ -3,7 +3,7 @@ import { ContentLayout, PageTitle } from "@/components";
 export default function Home() {
   return (
     <>
-    <PageTitle>Home</PageTitle>
+    <PageTitle>Tarefas pendentes</PageTitle>
     <ContentLayout>Content</ContentLayout>
   </>
   )
