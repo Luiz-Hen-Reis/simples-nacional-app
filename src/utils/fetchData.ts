@@ -15,3 +15,11 @@ export async function getCnaeInfo(cnae: string) {
 
   return res.data;
 }
+
+export async function getCnaeSubclassesInfo(cnae: string) {
+  const res = await axios.get(
+    `https://servicodados.ibge.gov.br/api/v2/cnae/classes/${cnae}/subclasses`
+  );
+
+  return res.data;
+}

@@ -8,7 +8,7 @@ import {
   PageTitle,
 } from "@/components";
 import { CnaeData } from "@/types/cnaeList";
-import { getCnaeList } from "@/server-actions";
+import { getCnaeList } from "@/utils/fetchData";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export default function SearchCnae() {

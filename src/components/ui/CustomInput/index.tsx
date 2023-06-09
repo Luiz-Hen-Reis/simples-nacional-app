@@ -4,7 +4,7 @@ import { ChangeEvent } from "react";
 type Props = {
   inputType: string;
   inputValue?: string;
-  resetSearch: () => void;
+  resetSearch?: () => void;
   placeholder?: string;
   maxLength?: number;
   handleClick?: () => void;
