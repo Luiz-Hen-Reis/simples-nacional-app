@@ -15,30 +15,32 @@ export default function AsideListItem({ title, path }: Props) {
   return (
     <li
       className={`items-center hover:bg-slate-700 cursor-pointer transition-all ${
-        pathname === path ? "bg-slate-700" : ""
+        pathname === path 
+          ? "bg-slate-700"
+          : ''
       }`}
     >
       <Link href={path} className="flex gap-2 p-4">
-      {title === "Home" && (
-        <>
-          <Home /> {title}
-        </>
-      )}
-      {title === "Calcular Simples Nacional" && (
-        <>
-          <Coins /> {title}
-        </>
-      )}
-      {title === "Calcular PIS/COFINS" && (
-        <>
-          <Banknote /> {title}
-        </>
-      )}
-      {title === "Pesquisar CNAE" && (
-        <>
-          <SearchIcon /> {title}
-        </>
-      )}
+        {title === "Home" && (
+          <>
+            <Home /> {title}
+          </>
+        )}
+        {title === "Calcular Simples Nacional" && (
+          <>
+            <Coins /> {title}
+          </>
+        )}
+        {title === "Calcular PIS/COFINS" && (
+          <>
+            <Banknote /> {title}
+          </>
+        )}
+        {title === "Pesquisar CNAE" && (
+          <>
+            <SearchIcon /> {title}
+          </>
+        )}
       </Link>
     </li>
   );

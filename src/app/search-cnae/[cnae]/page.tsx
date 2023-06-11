@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentLayout, CustomInput, Grid, Loading, PageTitle } from "@/components";
+import { Button, ContentLayout, Grid, Loading, PageTitle } from "@/components";
 import { getCnaeInfo, getCnaeSubclassesInfo } from "@/utils/fetchData";
 import { CnaeData } from "@/types/cnaeList";
 import { useParams, useRouter } from "next/navigation";
@@ -33,9 +33,8 @@ export default function Cnae() {
           {`CLASSE - ${cnae}`} - {loading && "CARREGANDO..."}{" "}
           {!loading &&  cnaeInfo?.descricao}
         </PageTitle>
-        <CustomInput
-          inputType="button"
-          inputValue="Voltar"
+        <Button
+          inputValue="&larr; Voltar"
           handleClick={() => router.back()}
         />
       </div>

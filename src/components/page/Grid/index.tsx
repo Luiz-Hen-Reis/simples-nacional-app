@@ -11,8 +11,8 @@ type Props = {
 export default function Grid({ cnaeList, subclasses }: Props) {
   return (
     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {cnaeList.map((cnae) => (
-        <GridItem key={cnae.id} cnae={cnae} subclasse={subclasses} />
+      {cnaeList.map((cnae, index) => (
+        <GridItem key={index} cnae={cnae} subclasse={subclasses} />
       ))}
     </ul>
   );

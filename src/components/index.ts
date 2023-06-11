@@ -5,5 +5,7 @@ import ContentLayout from "./page/ContentLayout";
 import Grid from "./page/Grid";
 import Loading from "./ui/Loading";
 import CustomInput from "./ui/CustomInput";
+import Button from "./ui/Button";
+import Modal from "./page/Modal";
 
-export { Aside, Header, PageTitle, ContentLayout, Grid, Loading, CustomInput };
+export { Aside, Header, PageTitle, ContentLayout, Grid, Loading, CustomInput, Button, Modal };

@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Aside, Header } from "@/components";
+import { Aside, Header, Modal } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +19,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex flex-col bg-gray-200`}
       >
+        <Modal isOpen={false} />
       <Header />
       <main className="flex flex-col lg:flex-row">
         <Aside />
