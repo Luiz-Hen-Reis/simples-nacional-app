@@ -7,5 +7,6 @@ import Loading from "./ui/Loading";
 import CustomInput from "./ui/CustomInput";
 import Button from "./ui/Button";
 import Modal from "./page/Modal";
+import SimplesCalcForm from "./page/SimplesCalcForm";
 
-export { Aside, Header, PageTitle, ContentLayout, Grid, Loading, CustomInput, Button, Modal };
+export { Aside, Header, PageTitle, ContentLayout, Grid, Loading, CustomInput, Button, Modal, SimplesCalcForm };

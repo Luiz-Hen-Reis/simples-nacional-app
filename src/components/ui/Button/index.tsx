@@ -2,7 +2,7 @@
 
 type Props = {
   inputValue: string;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 export default function Button({

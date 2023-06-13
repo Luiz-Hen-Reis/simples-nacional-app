@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 
 type Props = {
   inputType: string;
-  inputValue?: string;
+  inputValue: string;
   resetSearch?: () => void;
   placeholder?: string;
   maxLength?: number;
@@ -14,6 +14,7 @@ type Props = {
 export default function CustomInput({
   inputType,
   inputValue,
+
   handleClick,
   handleChange,
   placeholder,
@@ -26,7 +27,7 @@ export default function CustomInput({
         type={inputValue!.length > 4 ? "text" : inputType}
         onClick={handleClick}
         onChange={handleChange}
-        className="text-xl py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+        className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
         value={inputValue}
         placeholder={placeholder}
         autoFocus

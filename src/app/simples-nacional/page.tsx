@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ContentLayout, PageTitle } from "@/components";
+import { Button, ContentLayout, CustomInput, PageTitle, SimplesCalcForm } from "@/components";
 import { useRouter } from "next/navigation";
 
 export default function Simples() {
@@ -27,19 +27,33 @@ export default function Simples() {
           </blockquote>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4">
-          <p className="text-xl">Selecione um anexo:</p>
+        <div className="flex flex-col justify-center items-center gap-4 mb-4">
+          <p className="text-xl">Selecione um anexo para conferir a tabela:</p>
           <div className="flex flex-wrap gap-4">
-            <Button handleClick={() => router.push('/simples-nacional/anexo-I')} inputValue="Anexo I" />
-            <Button handleClick={() => router.push('/simples-nacional/anexo-II')} inputValue="Anexo II" />
             <Button
-              handleClick={() => router.push('/simples-nacional/anexo-III')}
+              handleClick={() => router.push("/simples-nacional/anexo-I")}
+              inputValue="Anexo I"
+            />
+            <Button
+              handleClick={() => router.push("/simples-nacional/anexo-II")}
+              inputValue="Anexo II"
+            />
+            <Button
+              handleClick={() => router.push("/simples-nacional/anexo-III")}
               inputValue="Anexo III"
             />
-            <Button handleClick={() => router.push('/simples-nacional/anexo-IV')} inputValue="Anexo IV" />
-            <Button handleClick={() => router.push('/simples-nacional/anexo-V')} inputValue="Anexo V" />
+            <Button
+              handleClick={() => router.push("/simples-nacional/anexo-IV")}
+              inputValue="Anexo IV"
+            />
+            <Button
+              handleClick={() => router.push("/simples-nacional/anexo-V")}
+              inputValue="Anexo V"
+            />
           </div>
         </div>
+
+        <SimplesCalcForm />
       </ContentLayout>
     </>
   );
