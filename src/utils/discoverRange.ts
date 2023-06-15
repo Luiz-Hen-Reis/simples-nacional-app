@@ -1,4 +1,4 @@
-enum Faixa {
+enum Range {
   faixa1 = 180000,
   faixa2 = 360000,
   faixa3 = 720000,
@@ -7,17 +7,12 @@ enum Faixa {
   faixa6 = 4800000,
 }
 
-export function discoverRange(RBT12: number) {
-  if (RBT12 <= Faixa.faixa1) return console.log("faixa 1");
-  else if (RBT12 > Faixa.faixa1 && RBT12 <= Faixa.faixa2)
-    return console.log("faixa 2");
-  else if (RBT12 > Faixa.faixa2 && RBT12 <= Faixa.faixa3)
-    return console.log("faixa 3");
-  else if (RBT12 > Faixa.faixa3 && RBT12 <= Faixa.faixa4)
-    return console.log("faixa 4");
-  else if (RBT12 > Faixa.faixa4 && RBT12 <= Faixa.faixa5)
-    return console.log("faixa 5");
-  else if (RBT12 > Faixa.faixa5 && RBT12 <= Faixa.faixa6)
-    return console.log("faixa 6");
-  else if (RBT12 > Faixa.faixa6) alert("Sua empresa ultrapassou o sublimite!");
+export function discoverRange(RBT12: number): string {
+  if (RBT12 <= Range.faixa1) return "range-1";
+  else if (RBT12 > Range.faixa1 && RBT12 <= Range.faixa2) return "range-2";
+  else if (RBT12 > Range.faixa2 && RBT12 <= Range.faixa3) return "range-3";
+  else if (RBT12 > Range.faixa3 && RBT12 <= Range.faixa4) return "range-4";
+  else if (RBT12 > Range.faixa4 && RBT12 <= Range.faixa5) return "range-5";
+  else if (RBT12 > Range.faixa5 && RBT12 <= Range.faixa6) return "range-6";
+  else return "out-range";
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { discoverRange } from "@/utils/discoverRange";
+import { FocusEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 
 type FormData = {
@@ -13,10 +14,17 @@ type FormData = {
 };
 
 export default function SimplesCalcForm() {
+  const [range, setRange] = useState("range-1");
   const { register, handleSubmit } = useForm<FormData>();
 
+  function handleSetRBT12Range(e: FocusEvent<HTMLInputElement>) {
+    setRange(discoverRange(Number(e.target.value)));
+  }
+
   const calculateSimples = handleSubmit((data) => {
-    discoverRange(data.RBT12);
+    if (data["Anexo-I"]) {
+      console.log(data["Anexo-I"], "RBT-12: ", range);
+    }
   });
 
   return (
@@ -35,6 +43,7 @@ export default function SimplesCalcForm() {
           className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
           {...register("RBT12")}
           placeholder="R$ 0,00"
+          onBlur={handleSetRBT12Range}
         />
       </div>
       <div className="flex flex-wrap gap-4 justify-center items-center">
