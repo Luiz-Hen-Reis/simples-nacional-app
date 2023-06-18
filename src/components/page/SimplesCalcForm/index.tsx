@@ -17,8 +17,15 @@ export default function SimplesCalcForm() {
   const [range, setRange] = useState("range-1");
   const { register, handleSubmit } = useForm<FormData>();
 
+  function formatToCurrency(value: string) {
+    let formatStringToNumber = Number(value);
+    return formatStringToNumber.toFixed(2);
+  }
+
   function handleSetRBT12Range(e: FocusEvent<HTMLInputElement>) {
     setRange(discoverRange(Number(e.target.value)));
+
+    e.target.value = formatToCurrency(e.target.value);
   }
 
   const calculateSimples = handleSubmit((data) => {
@@ -38,59 +45,77 @@ export default function SimplesCalcForm() {
         <label htmlFor="RBT12">
           <strong>Faturamento nos últimos 12 meses (RBT12)</strong>
         </label>
-        <input
-          type="number"
-          className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-          {...register("RBT12")}
-          placeholder="R$ 0,00"
-          onBlur={handleSetRBT12Range}
-        />
+        <div className="flex justify-center items-center">
+          <span className="text-lg gap-2">R$</span>
+          <input
+            type="number"
+            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+            {...register("RBT12")}
+            placeholder="0,00"
+            onBlur={handleSetRBT12Range}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap gap-4 justify-center items-center">
         <div>
           <label htmlFor="Anexo-I">Anexo I (Comércio)</label>
-          <input
-            type="number"
-            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-            {...register("Anexo-I")}
-            placeholder="R$ 0,00"
-          />
+          <div className="flex justify-center items-center">
+            <span className="text-lg gap-2">R$</span>
+            <input
+              type="number"
+              className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+              {...register("Anexo-I")}
+              placeholder="0,00"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="Anexo-II">Anexo II (Indústria)</label>
-          <input
-            type="number"
-            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-            {...register("Anexo-II")}
-            placeholder="R$ 0,00"
-          />
+          <div className="flex justify-center items-center">
+            <span className="text-lg gap-2">R$</span>
+            <input
+              type="number"
+              className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+              {...register("Anexo-II")}
+              placeholder="0,00"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="Anexo-III">Anexo III (Serviço)</label>
-          <input
-            type="number"
-            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-            {...register("Anexo-III")}
-            placeholder="R$ 0,00"
-          />
+          <div className="flex justify-center items-center">
+            <span className="text-lg gap-2">R$</span>
+            <input
+              type="number"
+              className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+              {...register("Anexo-III")}
+              placeholder="0,00"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="Anexo-IV">Anexo IV (Serviço)</label>
-          <input
-            type="number"
-            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-            {...register("Anexo-IV")}
-            placeholder="R$ 0,00"
-          />
+          <div className="flex justify-center items-center">
+            <span className="text-lg gap-2">R$</span>
+            <input
+              type="number"
+              className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+              {...register("Anexo-IV")}
+              placeholder="0,00"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="Anexo-V">Anexo V (Serviço)</label>
-          <input
-            type="number"
-            className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
-            {...register("Anexo-V")}
-            placeholder="R$ 0,00"
-          />
+          <div className="flex justify-center items-center">
+            <span className="text-lg gap-2">R$</span>
+            <input
+              type="number"
+              className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
+              {...register("Anexo-V")}
+              placeholder="0,00"
+            />
+          </div>
         </div>
       </div>
 
