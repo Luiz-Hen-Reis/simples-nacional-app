@@ -1,6 +1,10 @@
 "use client";
 
-import { discoverRange } from "@/utils/discoverRange";
+import useCalculateSimples from "@/hooks/useCalculateSimples";
+import {
+  discoverRange,
+  formatToCurrency,
+} from "@/utils/simplesNacionalFuctions";
 import { FocusEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -16,11 +20,7 @@ type FormData = {
 export default function SimplesCalcForm() {
   const [range, setRange] = useState("range-1");
   const { register, handleSubmit } = useForm<FormData>();
-
-  function formatToCurrency(value: string) {
-    let formatStringToNumber = Number(value);
-    return formatStringToNumber.toFixed(2);
-  }
+  const { getAnexoValue } = useCalculateSimples();
 
   function handleSetRBT12Range(e: FocusEvent<HTMLInputElement>) {
     setRange(discoverRange(Number(e.target.value)));
@@ -28,16 +28,16 @@ export default function SimplesCalcForm() {
     e.target.value = formatToCurrency(e.target.value);
   }
 
-  const calculateSimples = handleSubmit((data) => {
+  const handleCalculate = handleSubmit((data) => {
     if (data["Anexo-I"]) {
-      console.log(data["Anexo-I"], "RBT-12: ", range);
+      getAnexoValue("anexo-I", data["Anexo-I"], data.RBT12, range);
     }
   });
 
   return (
     <form
       className="flex flex-col justify-center items-center gap-6"
-      onSubmit={calculateSimples}
+      onSubmit={handleCalculate}
     >
       <p className="text-xl">Ferramenta de Cálculo do Simples Nacional</p>
 

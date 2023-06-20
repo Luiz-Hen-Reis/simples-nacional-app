@@ -16,3 +16,8 @@ export function discoverRange(RBT12: number): string {
   else if (RBT12 > Range.faixa5 && RBT12 <= Range.faixa6) return "range-6";
   else return "out-range";
 }
+
+export function formatToCurrency(value: string) {
+  let formatStringToNumber = Number(value);
+  return formatStringToNumber.toFixed(2);
+}
