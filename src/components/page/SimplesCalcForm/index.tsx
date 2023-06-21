@@ -20,7 +20,7 @@ type FormData = {
 export default function SimplesCalcForm() {
   const [range, setRange] = useState("range-1");
   const { register, handleSubmit } = useForm<FormData>();
-  const { getAnexoValue } = useCalculateSimples();
+  const { getAnexoValue,  } = useCalculateSimples();
 
   function handleSetRBT12Range(e: FocusEvent<HTMLInputElement>) {
     setRange(discoverRange(Number(e.target.value)));
@@ -31,6 +31,9 @@ export default function SimplesCalcForm() {
   const handleCalculate = handleSubmit((data) => {
     if (data["Anexo-I"]) {
       getAnexoValue("anexo-I", data["Anexo-I"], data.RBT12, range);
+    }
+    if (data["Anexo-II"]) {
+      getAnexoValue("anexo-II", data["Anexo-II"], data.RBT12, range);
     }
   });
 
