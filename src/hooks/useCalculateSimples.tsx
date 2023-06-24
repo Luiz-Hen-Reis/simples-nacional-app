@@ -1,9 +1,7 @@
 "use client";
 
 import { anexoData } from "@/utils/anexoData";
-
 export default function useCalculateSimples() {
-  let total = 0;
 
   function getAnexoValue(
     anexo: string,
@@ -11,38 +9,16 @@ export default function useCalculateSimples() {
     RBT12: number,
     range: string
   ) {
-    if (anexo === "anexo-I") {
-      let effectiveAliquot =
-        (RBT12 * anexoData[anexo][range].nominalAliquot -
-          anexoData[anexo][range].deduction) /
-        RBT12;
 
-      let totalDebt = value * effectiveAliquot;
+    let effectiveAliquot =
+      (RBT12 * anexoData[anexo][range].nominalAliquot -
+        anexoData[anexo][range].deduction) /
+      RBT12;
 
-      total += totalDebt;
-    }
+    let totalDebt = value * effectiveAliquot;
 
-    if (anexo === "anexo-II") {
-      let effectiveAliquot =
-        (RBT12 * anexoData[anexo][range].nominalAliquot -
-          anexoData[anexo][range].deduction) /
-        RBT12;
+    return totalDebt
 
-      let totalDebt = value * effectiveAliquot;
-
-      total += totalDebt;
-      console.log(total, effectiveAliquot);
-      
-    }
-
-    if (anexo === "anexo-III") {
-    }
-
-    if (anexo === "anexo-IV") {
-    }
-
-    if (anexo === "anexo-V") {
-    }
   }
 
   return { getAnexoValue };

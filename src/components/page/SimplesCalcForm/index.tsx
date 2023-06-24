@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/Button";
 import useCalculateSimples from "@/hooks/useCalculateSimples";
 import {
   discoverRange,
@@ -18,9 +19,10 @@ type FormData = {
 };
 
 export default function SimplesCalcForm() {
+  const { getAnexoValue } = useCalculateSimples();
   const [range, setRange] = useState("range-1");
   const { register, handleSubmit } = useForm<FormData>();
-  const { getAnexoValue,  } = useCalculateSimples();
+  let [totalTax, setTotalTax] = useState(0);
 
   function handleSetRBT12Range(e: FocusEvent<HTMLInputElement>) {
     setRange(discoverRange(Number(e.target.value)));
@@ -28,20 +30,27 @@ export default function SimplesCalcForm() {
     e.target.value = formatToCurrency(e.target.value);
   }
 
+  function toFixedInputValue(e: FocusEvent<HTMLInputElement>) {
+    e.target.value = formatToCurrency(e.target.value);
+  }
+
   const handleCalculate = handleSubmit((data) => {
-    if (data["Anexo-I"]) {
-      getAnexoValue("anexo-I", data["Anexo-I"], data.RBT12, range);
-    }
-    if (data["Anexo-II"]) {
-      getAnexoValue("anexo-II", data["Anexo-II"], data.RBT12, range);
-    }
+    setTotalTax(0);
+
+    let anexoI = getAnexoValue("anexo-I", data["Anexo-I"], data.RBT12, range) as number;
+    let anexoII = getAnexoValue("anexo-II", data["Anexo-II"], data.RBT12, range) as number;
+    let anexoIII = getAnexoValue("anexo-III", data["Anexo-III"], data.RBT12, range) as number;
+    let anexoIV = getAnexoValue("anexo-IV", data["Anexo-IV"], data.RBT12, range) as number;
+    let anexoV = getAnexoValue("anexo-V", data["Anexo-V"], data.RBT12, range) as number;
+
+    setTotalTax(anexoI + anexoII + anexoIII + anexoIV + anexoV)
+
   });
 
   return (
     <form
       className="flex flex-col justify-center items-center gap-6"
-      onSubmit={handleCalculate}
-    >
+      onSubmit={handleCalculate}>
       <p className="text-xl">Ferramenta de Cálculo do Simples Nacional</p>
 
       <div>
@@ -69,6 +78,7 @@ export default function SimplesCalcForm() {
               className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
               {...register("Anexo-I")}
               placeholder="0,00"
+              onBlur={toFixedInputValue}
             />
           </div>
         </div>
@@ -81,6 +91,7 @@ export default function SimplesCalcForm() {
               className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
               {...register("Anexo-II")}
               placeholder="0,00"
+              onBlur={toFixedInputValue}
             />
           </div>
         </div>
@@ -93,6 +104,7 @@ export default function SimplesCalcForm() {
               className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
               {...register("Anexo-III")}
               placeholder="0,00"
+              onBlur={toFixedInputValue}
             />
           </div>
         </div>
@@ -105,6 +117,7 @@ export default function SimplesCalcForm() {
               className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
               {...register("Anexo-IV")}
               placeholder="0,00"
+              onBlur={toFixedInputValue}
             />
           </div>
         </div>
@@ -117,12 +130,13 @@ export default function SimplesCalcForm() {
               className="text-xl w-full py-2 px-3 lg:py-4 lg:px-5 rounded-lg shadow-lg outline-none text-slate-700"
               {...register("Anexo-V")}
               placeholder="0,00"
+              onBlur={toFixedInputValue}
             />
           </div>
         </div>
       </div>
-
-      <input type="submit" value="calcular" />
+      <span className="content-center text-3xl font-bold text-blue-950">{totalTax !== 0 && 'TOTAL DO DAS A PAGAR R$' + totalTax.toFixed(2)}</span>
+      <Button inputValue="Calcular" typeSubmit />
     </form>
   );
 }
