@@ -1,6 +1,9 @@
+'use client';
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Aside, Header, Modal } from "@/components";
+import { ModalProvider, useModalContext } from "@/contexts/modalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,20 +17,24 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { modalIsOpen } = useModalContext();
+
   return (
     <html lang="pt-BR">
-      <body
-        className={`${inter.className} flex flex-col bg-gray-200`}
-      >
-        <Modal isOpen={false} />
-      <Header />
-      <main className="flex flex-col lg:flex-row">
-        <Aside />
-        <div className="flex-1 p-4 lg:p-6">
-          {children}
-        </div>
-      </main>
-      </body>
+      <ModalProvider>
+        <body
+          className={`${inter.className} flex flex-col bg-gray-200`}
+        >
+          <Modal />
+          <Header />
+          <main className="flex flex-col md:flex-row">
+            <Aside />
+            <div className="flex-1 p-4 lg:p-6">
+              {children}
+            </div>
+          </main>
+        </body>
+      </ModalProvider>
     </html>
   );
 }

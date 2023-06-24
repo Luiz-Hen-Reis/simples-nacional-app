@@ -3,7 +3,6 @@
 import {
   Button,
   ContentLayout,
-  Modal,
   PageTitle,
 } from "@/components";
 
