@@ -3,7 +3,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Aside, Header, Modal } from "@/components";
-import { ModalProvider, useModalContext } from "@/contexts/modalContext";
+import { ModalProvider } from "@/contexts/modalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +17,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { modalIsOpen } = useModalContext();
 
   return (
     <html lang="pt-BR">
+      
       <ModalProvider>
         <body
           className={`${inter.className} flex flex-col bg-gray-200`}
