@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 export default function Main() {
-  redirect("/home");
+  redirect("/simples-nacional");
 
   return <div></div>;
 }
